@@ -1,0 +1,168 @@
+Before we begin, here is some important contextual information:
+
+<case_study>
+{{ caseStudy }}
+</case_study>
+
+<ideal_customer_profile>
+{{ ICP }}
+</ideal_customer_profile>
+
+Now, let's focus on creating a personalized email for a specific prospect. Here's the information we have:
+
+<prospect_company>
+<name>{{ companyName }}</name>
+<activity>{{ activity }}</activity>
+<website>{{ companyWebsite }}</website>
+<industry>{{ industry }}</industry>
+</prospect_company>
+
+<our_company>
+<name>{{ senderCompany }}</name>
+<website>{{ ourWebsite }}</website>
+<meeting_link>{{ meetingLink }}</meeting_link>
+</our_company>
+
+<sender>
+<name>{{ senderName }}</name>
+<title>{{ senderTitle }}</title>
+</sender>
+
+<prospect_contact>
+<first_name>{{ firstName }}</first_name>
+<last_name>{{ lastName }}</last_name>
+<linkedin_url>{{ linkedinURL }}</linkedin_url>
+<title>{{ title }}</title>
+</prospect_contact>
+
+Your task is to create a personalized email that will encourage the prospect to book a meeting. Follow these steps:
+
+1. Analyze the prospect's company activity and information.
+2. Identify the most relevant aspects of our offering for this prospect.
+3. Craft a personalized, concise, and engaging email.
+
+Before writing the email, develop your outreach strategy by wrapping your analysis inside <outreach_analysis> tags. Include the following elements:
+
+1. List 3 key points about the prospect's company.
+2. List 3 key points about our company's offerings that are most relevant to this prospect. Be sure to focus on our value proposition to the prospect, not the prospect's value proposition to their clients.
+3. Analyze the prospect's LinkedIn profile and note 2-3 specific details for personalization.
+4. Brainstorm 2-3 potential angles for personalization based on company and LinkedIn information.
+5. Outline a brief structure for the email, including main points to cover.
+6. Identify the specific problems the prospect likely faces and how our solutions address them.
+7. Consider how to make the email provocative and attention-grabbing while remaining professional.
+8. Write down specific phrases or information from the case study that could be relevant to this prospect.
+9. Brainstorm 2-3 potential objections the prospect might have and how to address them.
+10. Explicitly connect the prospect's needs with our company's offerings by listing 3 ways our solutions solve their problems.
+11. Brainstorm 5 attention-grabbing opening lines tailored to this prospect.
+
+This will ensure you're using the prospect company context for personalization and explaining why they should take the meeting based on our company's offerings.
+
+When crafting the email, use the following guidelines:
+
+- Keep the tone casual yet professional, suitable for a high-growth startup.
+- Reference the prospect's recent visit to our website.
+- Use bullets to highlight key points and make the email easy to scan.
+- Incorporate relevant case studies if applicable.
+- Include our meeting link after "Book time" as a hyperlink with the text "here".
+- Sign the email with the sender's name and title.
+- Focus on the problems we think they have and the solutions we have to offer.
+- Be concise, specific, and provocative while maintaining professionalism.
+
+After your outreach strategy, present the email in the following format:
+
+<email>
+Subject: [Your subject line]
+
+Dear [Prospect's first name],
+
+[Body of the email, including bullets and case study references if applicable]
+
+Book time [meeting link] to discuss further.
+
+Best regards,
+[Sender's name]
+[Sender's title]
+</email>
+
+Remember to keep the email concise, results-oriented, and tailored to the prospect's specific situation and needs. Your goal is to be a legendary sales rep who can quickly capture attention and demonstrate value.
+
+Here's an example of the desired output structure (note that this is a generic example and your actual email should be fully personalized based on the prospect information):
+
+<outreach_analysis>
+1. Key points about prospect's company:
+- [Point 1]
+- [Point 2]
+- [Point 3]
+
+2. Relevant offerings:
+- [Offering 1]
+- [Offering 2]
+- [Offering 3]
+
+3. LinkedIn profile analysis:
+- [Detail 1]
+- [Detail 2]
+- [Detail 3]
+
+4. Personalization angles:
+- [Angle 1]
+- [Angle 2]
+- [Angle 3]
+
+5. Email structure:
+- Opening: [Brief description]
+- Main body: [Brief description]
+- Call to action: [Brief description]
+
+6. Problems and solutions:
+- [Problem 1] -> [Solution 1]
+- [Problem 2] -> [Solution 2]
+
+7. Provocative elements:
+- [Element 1]
+- [Element 2]
+
+8. Relevant case study information:
+- [Phrase/Information 1]
+- [Phrase/Information 2]
+
+9. Potential objections and responses:
+- [Objection 1] -> [Response 1]
+- [Objection 2] -> [Response 2]
+
+10. Connecting prospect's needs with our offerings:
+- [Connection 1]
+- [Connection 2]
+- [Connection 3]
+
+11. Attention-grabbing opening lines:
+- [Opening line 1]
+- [Opening line 2]
+- [Opening line 3]
+- [Opening line 4]
+- [Opening line 5]
+</outreach_analysis>
+
+<email>
+Subject: [Attention-grabbing, personalized subject line]
+
+Dear [First Name],
+
+[Opening sentence with personalization]
+
+[Main body with value proposition and relevance to prospect's situation]
+
+• [Key point 1]
+• [Key point 2]
+• [Key point 3]
+
+[Case study reference or social proof if applicable]
+
+Book time [meeting link] to discuss further.
+
+Best regards,
+[Sender's name]
+[Sender's title]
+</email>
+
+Your final output should consist only of the email and should not duplicate or rehash any of the work you did in the outreach analysis section.

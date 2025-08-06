@@ -1,0 +1,32 @@
+Here is the contextual information for this prospect:
+
+<case_study>
+{{ caseStudy }}
+</case_study>
+
+<ideal_customer_profile>
+{{ ICP }}
+</ideal_customer_profile>
+
+<prospect_company>
+<name>{{ companyName }}</name>
+<activity>{{ activity }}</activity>
+<website>{{ companyWebsite }}</website>
+</prospect_company>
+
+<our_company>
+<name>{{ senderCompany }}</name>
+<website>{{ ourWebsite }}</website>
+<meeting_link>{{ meetingLink }}</meeting_link>
+</our_company>
+
+<sender>
+<name>{{ senderName }}</name>
+<title>{{ senderTitle }}</title>
+</sender>
+
+<prospect_contact>
+<first_name>{{ firstName }}</first_name>
+<last_name>{{ lastName }}</last_name>
+<linkedin_url>{{ linkedinURL }}</linkedin_url>
+</prospect_contact>
