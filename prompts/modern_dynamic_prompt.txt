@@ -1,0 +1,64 @@
+You're writing an outbound email that actually converts. Here's the prospect:
+
+<prospect>
+Name: {{ firstName }} {{ lastName }}
+Title: {{ title }}
+Company: {{ companyName }}
+Industry: {{ industry }}
+Recent: {{ activity }}
+LinkedIn: {{ linkedinURL }}
+</prospect>
+
+<sender>
+{{ senderName }} from {{ senderCompany }}
+Meeting link: {{ meetingLink }}
+</sender>
+
+<our_value>
+{{ caseStudy }}
+Target: {{ ICP }}
+</our_value>
+
+BEFORE WRITING, QUICKLY ANALYZE (don't output this):
+1. What specific thing about them stands out? (check their posts, company news, role transition)
+2. What's their hidden pain point? (status loss, income uncertainty, credibility gap)
+3. What peer success story relates? (use specific numbers from case study)
+
+NOW WRITE THE EMAIL:
+
+Format:
+- Subject: lowercase, curiosity-driven, personal
+- Opening: "noticed [specific thing]" or pattern interrupt
+- Problem: agitate their real fear in 1 line
+- Solution: tease with peer success + specific metric
+- Ask: "worth X min [day] to see [specific thing]?"
+- PS: reference something they said/wrote
+
+Rules:
+- Under 100 words
+- All lowercase
+- No corporate speak
+- One specific reference to them
+- Mobile-optimized (short lines)
+- End with specific time/day
+
+Example structure (DO NOT COPY):
+subject: quick q about [specific thing]
+
+noticed [specific observation]
+
+[pattern interrupt question about their situation]
+
+[peer success with number] using [our approach]
+
+not [old way]
+but [new way]
+
+[specific metric achieved]
+
+worth [X] min [day] to see [deliverable]?
+
+[name]
+[link]
+
+ps - [personal reference]

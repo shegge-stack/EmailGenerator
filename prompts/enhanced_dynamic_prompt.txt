@@ -44,7 +44,7 @@ Your task is to create a personalized email that will encourage the prospect to 
 Before writing the email, develop your outreach strategy by wrapping your analysis inside <outreach_analysis> tags. Include the following elements:
 
 1. List 3 key points about the prospect's company.
-2. List 3 key points about our company's offerings that are most relevant to this prospect. Be sure to focus on our value proposition to the prospect, not the prospect's value proposition to their clients.
+2. List 3 key points about our company's offerings that are most relevant to this prospect. Be sure to focus on OUR UNIQUE value proposition to the prospect - what WE offer that is DIFFERENT from what the prospect's company does. DO NOT describe the prospect's own products or services back to them.
 3. Analyze the prospect's LinkedIn profile and note 2-3 specific details for personalization.
 4. Brainstorm 2-3 potential angles for personalization based on company and LinkedIn information.
 5. Outline a brief structure for the email, including main points to cover.
@@ -52,21 +52,22 @@ Before writing the email, develop your outreach strategy by wrapping your analys
 7. Consider how to make the email provocative and attention-grabbing while remaining professional.
 8. Write down specific phrases or information from the case study that could be relevant to this prospect.
 9. Brainstorm 2-3 potential objections the prospect might have and how to address them.
-10. Explicitly connect the prospect's needs with our company's offerings by listing 3 ways our solutions solve their problems.
+10. Explicitly connect the prospect's needs with our company's DIFFERENT offerings by listing 3 ways our solutions solve their problems. Focus on what makes OUR company unique compared to their existing solutions or industry.
 11. Brainstorm 5 attention-grabbing opening lines tailored to this prospect.
 
 This will ensure you're using the prospect company context for personalization and explaining why they should take the meeting based on our company's offerings.
 
 When crafting the email, use the following guidelines:
 
+- Keep the email under 150 words maximum
 - Keep the tone casual yet professional, suitable for a high-growth startup.
-- Reference the prospect's recent visit to our website.
-- Use bullets to highlight key points and make the email easy to scan.
-- Incorporate relevant case studies if applicable.
+- Reference the prospect's recent website visit only if explicitly mentioned in the activity
+- Use bullets sparingly - maximum 2-3 points if needed
+- ONLY reference the exact case study provided - do not invent details, metrics, or company names
 - Include our meeting link after "Book time" as a hyperlink with the text "here".
 - Sign the email with the sender's name and title.
 - Focus on the problems we think they have and the solutions we have to offer.
-- Be concise, specific, and provocative while maintaining professionalism.
+- Be concise, specific, and authentic - avoid generic claims or fabricated success stories.
 
 After your outreach strategy, present the email in the following format:
 

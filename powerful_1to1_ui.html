@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerful 1:1 Email Generator</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            height: calc(100vh - 40px);
+        }
+        
+        .panel {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .panel-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .panel-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .panel-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .panel-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        
+        /* Input Panel Styles */
+        .linkedin-input {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 2px dashed #cbd5e1;
+        }
+        
+        .linkedin-input.dragover {
+            border-color: #4f46e5;
+            background: #eef2ff;
+        }
+        
+        .linkedin-input h3 {
+            color: #334155;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        
+        .url-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .url-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .url-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .enrich-btn {
+            padding: 12px 24px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .enrich-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+        
+        .enrich-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-section {
+            margin-bottom: 24px;
+        }
+        
+        .form-section h3 {
+            color: #334155;
+            margin-bottom: 16px;
+            font-size: 18px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        .required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+        
+        textarea {
+            height: 80px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .char-count {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: right;
+            margin-top: 4px;
+        }
+        
+        .generate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .generate-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Output Panel Styles */
+        .output-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .control-btn {
+            padding: 8px 16px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            background: #e5e7eb;
+        }
+        
+        .control-btn.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        
+        .email-preview {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            min-height: 400px;
+        }
+        
+        .subject-line {
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            border-radius: 6px;
+        }
+        
+        .email-body {
+            color: #374151;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .email-body ul {
+            margin: 16px 0;
+            padding-left: 20px;
+        }
+        
+        .email-body li {
+            margin-bottom: 8px;
+        }
+        
+        .signature {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .email-preview:hover .copy-btn {
+            opacity: 1;
+        }
+        
+        .status-indicator {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .status-ready { background: #dcfce7; color: #166534; }
+        .status-generating { background: #fef3c7; color: #92400e; }
+        .status-error { background: #fee2e2; color: #991b1b; }
+        
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+        
+        .enrichment-status {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 6px 12px;
+            border-radius: 16px;
+            display: inline-block;
+        }
+        
+        .enriched { background: #dcfce7; color: #166534; }
+        .manual { background: #fef3c7; color: #92400e; }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Input Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>🎯 1:1 Email Generator</h2>
+                <p>Create powerful, personalized outreach messages</p>
+            </div>
+            
+            <div class="panel-content">
+                <!-- LinkedIn URL Input -->
+                <div class="linkedin-input" id="linkedinDropZone">
+                    <h3>LinkedIn URL Auto-Fill</h3>
+                    <div class="url-input-group">
+                        <input 
+                            type="url" 
+                            id="linkedinUrl" 
+                            class="url-input" 
+                            placeholder="https://linkedin.com/in/samuel-hegge"
+                        >
+                        <button class="enrich-btn" id="enrichBtn">
+                            🚀 Auto-Fill
+                        </button>
+                    </div>
+                    <div class="enrichment-status" id="enrichmentStatus" style="display: none;"></div>
+                </div>
+                
+                <form id="emailForm">
+                    <!-- Prospect Information -->
+                    <div class="form-section">
+                        <h3>👤 Prospect Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="required">First Name</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Last Name</label>
+                                <input type="text" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Company</label>
+                                <input type="text" name="companyName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Website</label>
+                                <input type="url" name="companyWebsite">
+                            </div>
+                            <div class="form-group">
+                                <label>Industry</label>
+                                <select name="industry">
+                                    <option value="">Select Industry</option>
+                                    <option value="B2B SaaS">B2B SaaS</option>
+                                    <option value="Mobile Marketing Technology">Mobile Marketing Technology</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                    <option value="Fintech">Fintech</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="AI/ML">AI/ML</option>
+                                    <option value="Cybersecurity">Cybersecurity</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" name="title" placeholder="Founder, VP Sales, CMO">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="required">Recent Activity/News</label>
+                            <textarea 
+                                name="activity" 
+                                required 
+                                placeholder="What has this company been up to lately? Recent funding, product launches, expansion, etc."
+                                maxlength="500"
+                            ></textarea>
+                            <div class="char-count" id="activityCount">0/500 characters</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Your Company Info -->
+                    <div class="form-section">
+                        <h3>🏢 Your Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="required">Your Name</label>
+                                <input type="text" name="senderName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Your Title</label>
+                                <input type="text" name="senderTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Your Company</label>
+                                <input type="text" name="senderCompany" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Meeting Link</label>
+                                <input type="url" name="meetingLink" required placeholder="https://calendly.com/yourname/demo">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="required">Your Case Study</label>
+                            <textarea 
+                                name="caseStudy" 
+                                required 
+                                placeholder="Describe a specific success story with metrics. E.g., 'We helped TechCorp increase their qualified meetings by 45% in 3 months using our outbound platform'"
+                                maxlength="300"
+                            ></textarea>
+                            <div class="char-count" id="caseStudyCount">0/300 characters</div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="required">Your ICP</label>
+                            <textarea 
+                                name="ICP" 
+                                required 
+                                placeholder="Who is your ideal customer? E.g., 'B2B SaaS companies with 50-500 employees looking to scale their outbound sales efforts'"
+                                maxlength="200"
+                            ></textarea>
+                            <div class="char-count" id="icpCount">0/200 characters</div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        ✨ Generate Powerful Email
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Output Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>📧 Generated Email</h2>
+                <p>Your personalized outreach message</p>
+            </div>
+            
+            <div class="panel-content">
+                <div class="status-indicator status-ready" id="statusIndicator">
+                    Ready to generate your email
+                </div>
+                
+                <div class="output-controls">
+                    <button class="control-btn active" data-view="preview">Preview</button>
+                    <button class="control-btn" data-view="text">Plain Text</button>
+                    <button class="control-btn" data-view="analysis">Analysis</button>
+                </div>
+                
+                <div class="email-preview" id="emailOutput">
+                    <div style="text-align: center; color: #6b7280; padding: 60px 20px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+                        <h3>Your powerful email will appear here</h3>
+                        <p>Fill out the form and click "Generate Powerful Email" to create your personalized outreach message.</p>
+                    </div>
+                    <button class="copy-btn" id="copyBtn" style="display: none;">📋 Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="powerful_1to1_script.js"></script>
+</body>
+</html>

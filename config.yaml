@@ -1,7 +1,7 @@
 # Email Generator Configuration
 
 # Model Provider Settings
-model_provider: "openrouter"  # Options: openai, openrouter
+model_provider: "openai"  # Options: openai, openrouter
 
 # OpenAI Settings
 openai:

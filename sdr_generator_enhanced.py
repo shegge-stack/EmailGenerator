@@ -100,7 +100,7 @@ class EnhancedSDRGenerator:
         
         return result
         
-    def generate_email(self, data: Dict, model: Optional[str] = None, include_analysis: bool = False) -> str:
+    def generate_email(self, data: Dict, model: Optional[str] = None, include_analysis: bool = False, custom_prompt: Optional[str] = None) -> str:
         """Generate a personalized email with comprehensive analysis."""
         try:
             # Validate input data
@@ -109,13 +109,21 @@ class EnhancedSDRGenerator:
             # Log the generation request
             logger.info(f"Generating enhanced email for {data['firstName']} {data['lastName']} at {data['companyName']}")
             
-            # Render the user prompt
-            user_prompt = self.user_template.render(**data)
-            
-            # Create messages
-            messages = [
-                {"role": "system", "content": self.system_prompt},
-                {"role": "user", "content": user_prompt}
+            # Use custom prompt if provided, otherwise use template
+            if custom_prompt:
+                # Custom prompt replaces both system and user messages
+                messages = [
+                    {"role": "system", "content": "You are an expert at writing personalized outreach emails. Follow the style instructions EXACTLY. Do not deviate from the format, tone, or structure specified."},
+                    {"role": "user", "content": custom_prompt + "\n\nIMPORTANT: Generate ONLY the email content, no analysis or explanation. Follow the style format exactly."}
+                ]
+            else:
+                # Render the standard user prompt
+                user_prompt = self.user_template.render(**data)
+                
+                # Create messages
+                messages = [
+                    {"role": "system", "content": self.system_prompt},
+                    {"role": "user", "content": user_prompt}
             ]
             
             # Generate email with analysis

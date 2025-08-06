@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 THE MOST POWERFUL 1:1 Messager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .panel {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .panel-header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .panel-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .panel-content {
+            padding: 32px;
+        }
+        
+        /* LinkedIn Input */
+        .linkedin-section {
+            margin-bottom: 32px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .linkedin-section h3 {
+            margin-bottom: 16px;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .url-group {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .url-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .url-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .scrape-btn {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .scrape-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+        }
+        .scrape-btn:disabled { 
+            background: #9ca3af; 
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 15px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        textarea {
+            height: 90px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .generate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .generate-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+        }
+        .generate-btn:disabled { 
+            background: #9ca3af; 
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Output */
+        .email-output {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 400px;
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .subject {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1f2937;
+            font-size: 16px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .copy-btn, .send-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn {
+            background: #059669;
+            color: white;
+        }
+        
+        .copy-btn:hover {
+            background: #047857;
+            transform: translateY(-1px);
+        }
+        
+        .send-btn {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+        }
+        
+        .send-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+        }
+        
+        .send-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .status-ready { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .status-loading { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+        .status-success { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+        
+        .email-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .modal-header h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        
+        .send-form .form-group {
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .action-buttons { grid-template-columns: 1fr; }
+            .header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 THE MOST POWERFUL 1:1 Messager</h1>
+        <p>Generate. Send. Convert to Meetings.</p>
+    </div>
+    
+    <div class="container">
+        <!-- Input Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>📧 Email Generator</h2>
+                <p>Personalized. Powerful. Professional.</p>
+            </div>
+            
+            <div class="panel-content">
+                <!-- LinkedIn Scraping -->
+                <div class="linkedin-section">
+                    <h3>🔍 LinkedIn Auto-Fill</h3>
+                    <div class="url-group">
+                        <input 
+                            type="url" 
+                            id="linkedinUrl" 
+                            class="url-input" 
+                            placeholder="https://linkedin.com/in/samuel-hegge"
+                        >
+                        <button class="scrape-btn" id="scrapeBtn">Fill Data</button>
+                    </div>
+                </div>
+                
+                <!-- Simple Form -->
+                <form id="emailForm">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Company *</label>
+                        <input type="text" name="companyName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" name="title">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Recent Company News/Activity *</label>
+                        <textarea name="activity" required placeholder="What's this company been up to lately? Funding, launches, expansion, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your Case Study *</label>
+                        <textarea name="caseStudy" required placeholder="We helped [Company] achieve [specific result] by [what you do]"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" name="senderName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Meeting Link *</label>
+                        <input type="url" name="meetingLink" required placeholder="https://calendly.com/yourname">
+                    </div>
+                    
+                    <button type="submit" class="generate-btn">✨ Generate Email</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Output Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>🚀 Generated Email</h2>
+                <p>Ready to copy or send directly</p>
+            </div>
+            
+            <div class="panel-content">
+                <div class="status status-ready" id="status">
+                    Ready to generate your powerful email
+                </div>
+                
+                <div class="email-output" id="emailOutput">
+                    <div style="text-align: center; color: #6b7280; margin-top: 120px;">
+                        <h3>🎯 Your email will appear here</h3>
+                        <p>Fill out the form and click generate</p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons" id="actionButtons" style="display: none;">
+                    <button class="copy-btn" id="copyBtn">📋 Copy Email</button>
+                    <button class="send-btn" id="sendBtn">🚀 Send Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Email Sending Modal -->
+    <div class="email-modal" id="emailModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">×</button>
+            <div class="modal-header">
+                <h3>📨 Send Email</h3>
+                <p>Confirm details before sending</p>
+            </div>
+            
+            <form class="send-form" id="sendForm">
+                <div class="form-group">
+                    <label>To (Prospect Email) *</label>
+                    <input type="email" name="prospectEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>From Email *</label>
+                    <input type="email" name="fromEmail" placeholder="your@company.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" name="fromName" required>
+                </div>
+                
+                <button type="submit" class="send-btn" style="width: 100%; margin-top: 16px;">
+                    🚀 Send Email Now
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        let generatedEmail = null;
+        let postmarkEnabled = false;
+        let currentFormData = null;
+        
+        // LinkedIn scraping
+        document.getElementById('scrapeBtn').addEventListener('click', async function() {
+            const url = document.getElementById('linkedinUrl').value.trim();
+            const btn = this;
+            
+            if (!url) {
+                updateStatus('error', 'Please enter a LinkedIn URL');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'Extracting...';
+            updateStatus('loading', 'Extracting data from LinkedIn...');
+            
+            try {
+                const response = await fetch('/api/enrich-linkedin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ linkedin_url: url })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    // Fill form with extracted data
+                    Object.entries(result.data).forEach(([key, value]) => {
+                        const input = document.querySelector(`[name="${key}"]`);
+                        if (input && value) input.value = value;
+                    });
+                    
+                    updateStatus('success', `✅ Data extracted successfully from ${result.source}`);
+                } else {
+                    updateStatus('ready', 'Manual input required - auto-fill not available');
+                }
+            } catch (error) {
+                console.error('LinkedIn enrichment error:', error);
+                updateStatus('error', 'Could not extract data - please fill manually');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Fill Data';
+            }
+        });
+        
+        // Email generation
+        document.getElementById('emailForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            currentFormData = data;
+            
+            // Add required fields for the API
+            data.ICP = "B2B companies looking to scale their sales and marketing efforts";
+            data.senderTitle = "Sales Representative";  
+            data.senderCompany = "Your Company";
+            data.ourWebsite = "https://yourcompany.com";
+            data.linkedinURL = document.getElementById('linkedinUrl').value;
+            
+            updateStatus('loading', 'Generating personalized email...');
+            
+            try {
+                const response = await fetch('/api/generate-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) throw new Error('Generation failed');
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    generatedEmail = result.email;
+                    postmarkEnabled = result.postmark_enabled;
+                    
+                    // Display email
+                    document.getElementById('emailOutput').innerHTML = `
+                        <div class="subject">Subject: ${result.email.subject}</div>
+                        <div>${result.email.body.replace(/\n/g, '<br>')}</div>
+                        <div style="margin-top: 20px; padding: 12px; background: #f0f9ff; border-radius: 8px; font-size: 14px; color: #0369a1;">
+                            📊 ${result.word_count} words | ${result.generation_method === 'enhanced' ? 'Enhanced' : 'Basic'} generation
+                        </div>
+                    `;
+                    
+                    // Show action buttons
+                    document.getElementById('actionButtons').style.display = 'grid';
+                    
+                    // Update send button based on Postmark availability
+                    const sendBtn = document.getElementById('sendBtn');
+                    if (postmarkEnabled) {
+                        sendBtn.style.display = 'block';
+                        sendBtn.textContent = '🚀 Send Now';
+                    } else {
+                        sendBtn.style.display = 'none';
+                    }
+                    
+                    updateStatus('success', '✅ Email generated successfully!');
+                } else {
+                    throw new Error(result.error);
+                }
+                
+            } catch (error) {
+                console.error('Generation error:', error);
+                document.getElementById('emailOutput').innerHTML = `
+                    <div style="color: #ef4444; text-align: center; margin-top: 100px;">
+                        <h3>❌ Generation Failed</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                updateStatus('error', '❌ Generation failed');
+                document.getElementById('actionButtons').style.display = 'none';
+            }
+        });
+        
+        // Copy to clipboard
+        document.getElementById('copyBtn').addEventListener('click', async function() {
+            if (!generatedEmail) return;
+            
+            const emailText = `Subject: ${generatedEmail.subject}\n\n${generatedEmail.body}`;
+            
+            try {
+                await navigator.clipboard.writeText(emailText);
+                this.textContent = '✅ Copied!';
+                updateStatus('success', 'Email copied to clipboard!');
+                setTimeout(() => {
+                    this.textContent = '📋 Copy Email';
+                }, 2000);
+            } catch (error) {
+                alert('Could not copy to clipboard');
+            }
+        });
+        
+        // Send email modal
+        document.getElementById('sendBtn').addEventListener('click', function() {
+            if (!generatedEmail || !postmarkEnabled) return;
+            
+            // Pre-fill modal with current data
+            if (currentFormData) {
+                document.querySelector('[name="prospectEmail"]').value = '';
+                document.querySelector('[name="fromName"]').value = currentFormData.senderName || '';
+            }
+            
+            document.getElementById('emailModal').style.display = 'block';
+        });
+        
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('emailModal').style.display = 'none';
+        });
+        
+        // Send email
+        document.getElementById('sendForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!generatedEmail) return;
+            
+            const formData = new FormData(this);
+            const sendData = Object.fromEntries(formData.entries());
+            
+            // Prepare email data
+            const emailData = {
+                prospectEmail: sendData.prospectEmail,
+                prospectName: `${currentFormData.firstName} ${currentFormData.lastName}`,
+                companyName: currentFormData.companyName,
+                subject: generatedEmail.subject,
+                body: generatedEmail.body,
+                meetingLink: currentFormData.meetingLink,
+                senderName: sendData.fromName
+            };
+            
+            updateStatus('loading', 'Sending email...');
+            
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(emailData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    updateStatus('success', `🎉 Email sent successfully to ${emailData.prospectName}!`);
+                    document.getElementById('emailModal').style.display = 'none';
+                    
+                    // Show tracking info if available
+                    if (result.email_id) {
+                        setTimeout(() => {
+                            updateStatus('ready', `📊 Tracking enabled - Email ID: ${result.email_id}`);
+                        }, 3000);
+                    }
+                } else {
+                    throw new Error(result.error);
+                }
+                
+            } catch (error) {
+                console.error('Send error:', error);
+                updateStatus('error', `❌ Send failed: ${error.message}`);
+            }
+        });
+        
+        // Close modal on background click
+        document.getElementById('emailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+        
+        // Utility function to update status
+        function updateStatus(type, message) {
+            const status = document.getElementById('status');
+            status.className = `status status-${type}`;
+            status.textContent = message;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus('ready', 'Ready to generate your powerful email');
+        });
+    </script>
+</body>
+</html>

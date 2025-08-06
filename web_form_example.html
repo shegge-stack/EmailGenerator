@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Generator - Parameter Capture</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .section h3 { margin-top: 0; color: #333; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        textarea { height: 80px; resize: vertical; }
+        button { background: #007cba; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+        .required { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Email Generator - Parameter Input</h1>
+    
+    <form id="emailForm">
+        <!-- Prospect Information -->
+        <div class="section">
+            <h3>👤 Prospect Information</h3>
+            
+            <label>First Name <span class="required">*</span></label>
+            <input type="text" name="firstName" required placeholder="Samuel">
+            
+            <label>Last Name <span class="required">*</span></label>
+            <input type="text" name="lastName" required placeholder="Hegge">
+            
+            <label>Company Name <span class="required">*</span></label>
+            <input type="text" name="companyName" required placeholder="Singular">
+            
+            <label>Company Website</label>
+            <input type="url" name="companyWebsite" placeholder="https://singular.net">
+            
+            <label>Recent Activity/News <span class="required">*</span></label>
+            <textarea name="activity" required placeholder="Recently raised $50M Series B and expanding into European markets"></textarea>
+            
+            <label>Industry</label>
+            <select name="industry">
+                <option value="">Select Industry</option>
+                <option value="B2B SaaS">B2B SaaS</option>
+                <option value="Mobile Marketing Technology">Mobile Marketing Technology</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Fintech">Fintech</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label>Job Title</label>
+            <input type="text" name="title" placeholder="Founder, VP Sales, CMO">
+            
+            <label>LinkedIn URL</label>
+            <input type="url" name="linkedinURL" placeholder="https://linkedin.com/in/samuel-hegge">
+        </div>
+        
+        <!-- Your Company Information -->
+        <div class="section">
+            <h3>🏢 Your Company Information</h3>
+            
+            <label>Sender Name <span class="required">*</span></label>
+            <input type="text" name="senderName" required placeholder="Sarah Johnson">
+            
+            <label>Sender Title <span class="required">*</span></label>
+            <input type="text" name="senderTitle" required placeholder="VP of Sales">
+            
+            <label>Company Name <span class="required">*</span></label>
+            <input type="text" name="senderCompany" required placeholder="OutreachPro">
+            
+            <label>Company Website</label>
+            <input type="url" name="ourWebsite" placeholder="https://outreachpro.com">
+            
+            <label>Meeting Link <span class="required">*</span></label>
+            <input type="url" name="meetingLink" required placeholder="https://calendly.com/demo">
+        </div>
+        
+        <!-- Messaging Strategy -->
+        <div class="section">
+            <h3>📧 Messaging Strategy</h3>
+            
+            <label>Case Study <span class="required">*</span></label>
+            <textarea name="caseStudy" required placeholder="We helped TechCorp increase their qualified pipeline by 45% in 3 months using our AI-powered outreach platform"></textarea>
+            
+            <label>Ideal Customer Profile (ICP) <span class="required">*</span></label>
+            <textarea name="ICP" required placeholder="B2B SaaS companies with 50-500 employees looking to scale their outbound sales efforts"></textarea>
+        </div>
+        
+        <!-- Generation Options -->
+        <div class="section">
+            <h3>⚙️ Generation Options</h3>
+            
+            <label>
+                <input type="checkbox" name="enhanced" checked> Use Enhanced Generator (with analysis)
+            </label>
+            
+            <label>
+                <input type="checkbox" name="includeAnalysis"> Include Analysis in Output
+            </label>
+            
+            <label>AI Model</label>
+            <select name="model">
+                <option value="">Default Model</option>
+                <option value="gpt-4-turbo-preview">GPT-4 Turbo</option>
+                <option value="anthropic/claude-3-sonnet">Claude 3 Sonnet</option>
+                <option value="anthropic/claude-3-opus">Claude 3 Opus</option>
+            </select>
+        </div>
+        
+        <button type="submit">🚀 Generate Email</button>
+    </form>
+    
+    <div id="result" style="margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 8px; display: none;">
+        <h3>Generated Email:</h3>
+        <pre id="emailOutput"></pre>
+    </div>
+    
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Show collected parameters (in real app, send to your API)
+            console.log('Parameters to send to email generator:', data);
+            
+            // Simulate API call
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('emailOutput').textContent = 
+                'Parameters captured successfully!\n\n' + 
+                JSON.stringify(data, null, 2) + 
+                '\n\n[In production, this would call your email generator API]';
+        });
+    </script>
+</body>
+</html>

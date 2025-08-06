@@ -1,6 +1,8 @@
-# SDR Email Generator 🚀
+# 🎯 THE MOST POWERFUL 1:1 Messager
 
-An AI-powered Sales Development Representative (SDR) email generator that creates personalized outreach emails and sequences. Supports multiple AI providers including OpenAI and OpenRouter, with advanced personalization features.
+**Generate. Send. Convert to Meetings.**
+
+A sophisticated email generation and sending system that creates personalized 1:1 outreach emails with integrated Postmark sending capabilities.
 
 ## Features ✨
 
